@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="styles.css">
+    <script src="test1.js"></script>
+    <script src="devices.js"></script>
+    <script src="playback.js"></script>
+
+    <body onload="onload_page(), setInterval('refresher()', 200)">
+        <!-- <body onload="get_token()"></body> -->
+    
+
+        <h1>
+            Spotify API
+        </h1>
+        <button type="button" onclick="request_authorization()">Request Authorization</button>
+        <button type="button" onclick="refresh_access_token()">Refresh Authorization</button>
+        <br>
+        <br>
+        <button type="button" onclick="get_devices()">Get devices</button>
+        <br>
+        <p id='show_devices_HTML'>
+        </p>
+
+        <input id='device_choice'>
+        <button type="button" onclick="select_device()">Choose Device</button>
+        <p id="selected_device_HTML"></p>
+        
+        <input type="range" min="0" max="100" value="25" class="slider" id="volume_slider">
+
+        <button type="button" onclick="previous()">Previous Track</button>
+        <button type="button" onclick="play()">Play Current Track</button>
+        <button type="button" onclick="next()">Next Track</button>
+        <button type="button" onclick="set_volume()">Set Volume Button</button>
+        <!-- <button type="button" onclick="currently_playing()">See Currently Playing</button> -->
+
+
+        <br>
+        <p id="currently_playing_HTML"></p>
+
+        <p id='album_cover'>
+
+        
+
+    </body>
+
+</html>
