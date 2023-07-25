@@ -2,6 +2,10 @@ async function refresher() {
   if (JSON.parse(sessionStorage.getItem("device_selected")) == true) {
     try {
       await currently_playing();
+      let selected_device = JSON.parse(localStorage.getItem("selected_device"));
+      if (selected_device.name == "Dev's Echo Dot") { // Only the Echo is able to be volume controlled
+          await set_volume();
+    }
     } catch (error) {
       const response = await api_call('GET', '/me/player/currently-playing', false);
       if (response.status == 401) {
@@ -155,22 +159,21 @@ async function previous() {
 }
 
 // NOT POSSIBLE WITH IOS 
-// async function set_volume() {
-//     let device_selected = JSON.parse(localStorage.getItem('selected_device'));
-//     let device_id = device_selected.id;
-//     let temp_refresh_token = localStorage.getItem('temp_refresh_token');
+async function set_volume() {
+    let device_selected = JSON.parse(localStorage.getItem('selected_device'));
+    let device_id = device_selected.id;
+    let temp_refresh_token = localStorage.getItem('temp_refresh_token');
+    let volume_percent = document.getElementById('volume_slider').value;
   
-//     const url = `https://api.spotify.com/v1/me/player/volume?volume_percent=50&${device_id}`;
+    const url = `https://api.spotify.com/v1/me/player/volume?volume_percent=${volume_percent}&${device_id}`;
   
-//     var result = await fetch(url, {
-//       method: 'PUT',
-//       headers: {
-//         'Authorization': 'Bearer ' + temp_refresh_token,
-//       },
-//     });
+    var result = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + temp_refresh_token,
+      },
+    });
 
-//     console.log(result);
-// }
-
+}
 
 
