@@ -2,7 +2,7 @@
 const client_id = '45420b7bdbd044868beb5c5a9efa8519';
 const client_secret = '3ca1931fd146440698103f2c7f263414';
 
-const redirect_uri = 'http://127.0.0.1:5500/HomePage.html';
+const redirect_uri = 'http://127.0.0.1:5500/SpotifyAPI/HomePage.html';
 const AUTHORIZE = 'https://accounts.spotify.com/authorize';
 const state_value = '';
 var authorization_code = '';
@@ -17,7 +17,7 @@ function request_authorization(){
     url += '&response_type=code&redirect_uri=' + encodeURI(redirect_uri);
     url += '&scope=user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private';
     url += '&state=' + state_value;
-    url += "&show_dialog=true"; // Originally true
+    url += "&show_dialog=false"; // Originally true
     // alert(url);
     window.location.href = url; // Show screen
     // alert('Work 3');

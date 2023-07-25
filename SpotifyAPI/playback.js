@@ -18,9 +18,6 @@ async function play() {
     let device_id = device_selected.id;
     let temp_refresh_token = localStorage.getItem('temp_refresh_token');
 
-    const requestBody = new URLSearchParams();
-    requestBody.append('context_uri', ''/*spotify song uri here */);
-
     if (await is_playing_status()) {
         playback = 'pause';
     }
@@ -35,7 +32,47 @@ async function play() {
             'Content-Type' : 'application/json'
         }
     })
+
 }
+async function play_new_song () {
+    let device_selected = JSON.parse(localStorage.getItem('selected_device'));
+    let device_id = device_selected.id;
+    let temp_refresh_token = localStorage.getItem('temp_refresh_token');        
+
+    let track_uri = await get_track();
+
+    console.log('here');
+        var result = await fetch('https://api.spotify.com/v1/me/player/play?device_id=' + device_id, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer ' + temp_refresh_token,
+          'Content-Type': 'application/json', 
+        } ,
+        body: JSON.stringify({
+            'uris': [track_uri]
+        })
+      });
+}
+
+async function get_track() {
+    let device_selected = JSON.parse(localStorage.getItem('selected_device'));
+    let device_id = device_selected.id;
+    let temp_refresh_token = localStorage.getItem('temp_refresh_token');        
+
+    let track_query = encodeURIComponent(document.getElementById('track_choice').value);
+
+    const result = await fetch (`https://api.spotify.com/v1/search?q=${track_query}&type=track`, {// COME BACk, SWITCH TO THIS STYLE
+        headers: {
+            'Authorization': `Bearer ${temp_refresh_token}`
+        },
+        }); 
+    const data = await result.json();
+    console.log(data.tracks.items[0].uri);
+    let first_track = data.tracks.items[0].uri; 
+    return first_track;
+}
+
+
 
 // Returns if it is unpaused
 async function is_playing_status() { 
@@ -116,6 +153,8 @@ async function previous() {
     await api_call('POST', '/me/player/previous');
     await currently_playing();
 }
+
+// NOT POSSIBLE WITH IOS 
 // async function set_volume() {
 //     let device_selected = JSON.parse(localStorage.getItem('selected_device'));
 //     let device_id = device_selected.id;

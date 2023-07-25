@@ -28,7 +28,7 @@ body {
     font-size: 18px;
   }
   
-  #device_choice {
+  .search_bar {
     margin: 10px;
     padding: 5px;
     font-size: 16px;
@@ -37,4 +37,5 @@ body {
   #selected_device_HTML {
     font-size: 18px;
   }
+  
   
