@@ -10,7 +10,8 @@ var client_id = '';
 var client_secret = '';
 
 async function set_client_info() {
-  const response = await fetch("./sensitive_info.json");
+  // This would be a local JSON file that includes your client id and client secret.
+  const response = await fetch("./sensitive_info.json"); 
   const json = await response.json();
 
   client_id = json.client.client_id;
