@@ -1,6 +1,5 @@
-
-const client_id = '45420b7bdbd044868beb5c5a9efa8519';
-const client_secret = '3ca1931fd146440698103f2c7f263414';
+const client_id = '';
+const client_secret = '';
 
 const redirect_uri = 'http://127.0.0.1:5500/SpotifyAPI/HomePage.html';
 const AUTHORIZE = 'https://accounts.spotify.com/authorize';
