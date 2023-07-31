@@ -25,12 +25,11 @@ function request_authorization(){
 }
 
 function onload_page(){
-  // alert('onload ran');
+
   sessionStorage.setItem("device_selected", false);
   if (window.location.search.length > 0){ // window.location. search is the Query (characters at the end of URL)
     // alert('reached here');
     redirect_post_authorization();
-
   }
 }
 
@@ -167,19 +166,3 @@ async function select_device(){
   }
   sessionStorage.setItem("device_selected", true); // Useful for Refresh Function
 }
-
-
-// alert(typeof(device_list));
-  // alert(selected_device_name);
-  // alert(device_list.length);
-
-  // for (let i=0; i<dn.length; i++) {
-  //   let obj = dn[i];
-  //   alert(dn);
-  //   if(obj == selected_device_name){
-  //     localStorage.setItem("selected_device_JSON", JSON.stringify(obj));
-  //     const readable = JSON.stringify(obj, null, 2);
-  //     console.log(readable);
-
-  //   }
-  // }

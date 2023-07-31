@@ -1,11 +1,15 @@
+async function on_input_volume () {
+    let selected_device = JSON.parse(localStorage.getItem("selected_device"));
+    if (selected_device.name == "Dev's Echo Dot") { // Only the Echo is able to be volume controlled
+        await set_volume();
+    }
+}
+
 async function refresher() {
   if (JSON.parse(sessionStorage.getItem("device_selected")) == true) {
     try {
       await currently_playing();
-      let selected_device = JSON.parse(localStorage.getItem("selected_device"));
-      if (selected_device.name == "Dev's Echo Dot") { // Only the Echo is able to be volume controlled
-          await set_volume();
-    }
+
     } catch (error) {
       const response = await api_call('GET', '/me/player/currently-playing', false);
       if (response.status == 401) {

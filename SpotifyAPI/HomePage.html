@@ -5,13 +5,20 @@
     <script src="devices.js"></script>
     <script src="playback.js"></script>
 
-    <body onload="onload_page(), setInterval('refresher()', 200)">
+    <body onload="onload_page(), setInterval('refresher()', 750)">
         <!-- <body onload="get_token()"></body> -->
     
 
         <h1>
             Spotify API
         </h1>
+        <!-- <input id='client_id' class="search_bar">
+        <br>
+        <input id='client_secret' class="search_bar">
+        <br>
+        <button type="button" onclick="set_client_id_and_secret()">Submit</button>
+        <br> -->
+
         <button type="button" onclick="request_authorization()">Request Authorization</button>
         <button type="button" onclick="refresh_access_token()">Refresh Authorization</button>
         <br>
@@ -30,7 +37,7 @@
         <button type="button" onclick="play_new_song()">Play New Song</button>
         <br>
 
-        <input type="range" min="0" max="100" value="5" class="slider" id="volume_slider">
+        <input type="range" min="0" max="100" value="5" class="slider" id="volume_slider" oninput="on_input_volume()">
 
         <button type="button" onclick="previous()">Previous Track</button>
         <button type="button" onclick="play()">Play Current Track</button>
