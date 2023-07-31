@@ -1,6 +1,3 @@
-const client_id = '';
-const client_secret = '';
-
 const redirect_uri = 'http://127.0.0.1:5500/SpotifyAPI/HomePage.html';
 const AUTHORIZE = 'https://accounts.spotify.com/authorize';
 const state_value = '';
@@ -8,6 +5,20 @@ var authorization_code = '';
 var authorization_refresh_token = '';
 
 var temp_refresh_token = '';
+
+var client_id = '';
+var client_secret = '';
+
+async function set_client_info() {
+  const response = await fetch("./sensitive_info.json");
+  const json = await response.json();
+
+  client_id = json.client.client_id;
+  client_secret = json.client.client_secret;
+  console.log(client_id);
+  console.log(client_secret);
+
+}
 
 function request_authorization(){
     let url = AUTHORIZE; // https://accounts.spotify.com/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REDIRECT_URI&scope=user-read-playback-state&state=YOUR_STATE_VALUE
@@ -23,8 +34,10 @@ function request_authorization(){
 
 }
 
-function onload_page(){
-
+async function onload_page(){
+  await set_client_info();
+  console.log(client_id);
+  console.log(client_secret);
   sessionStorage.setItem("device_selected", false);
   if (window.location.search.length > 0){ // window.location. search is the Query (characters at the end of URL)
     // alert('reached here');
