@@ -37,7 +37,7 @@ async function onload_page(){
 
     else {
         setTimeout(function() {
-            alert("Delay")
+            // alert("Delay")
             request_authorization();
           }, 1000);       
 
