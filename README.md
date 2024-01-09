@@ -8,11 +8,13 @@ I created a web app that uses the Spotify API to first authenticate the site usi
 ### Setup
 1. The application only works for users that have a Spotify Premium account. Go to the "Spotify for Developers" dashboard, or follow this link: https://developer.spotify.com/dashboard
 2. Select "Create app" and fill-in the necessary fields. Ensure that the Redirect URI is "http://127.0.0.1:5500/HomePage.html". As the program authenticates your profile, Spotify must redirect the user back to the original web page.
+
 <img width="700" alt="Screen Shot 2024-01-08 at 22 40 06" src="https://github.com/KabrG/Spotify-Web-API/assets/130770806/405c8901-bf0e-46be-a2fd-7529b5894d99">
 
 3. After creating your app, enter settings where you can view your Client ID and Client. **Your Client ID and Client Secret are identifiers for your profile and should remain private**. 
 4. Obtain the code from the "SpotifyAPI" folder.
 5. In the same folder, create a file labelled `sensitive_info.json`. Edit the JSON object accordingly:
+
 <img width="518" alt="Screen Shot 2024-01-08 at 22 57 54" src="https://github.com/KabrG/Spotify-Web-API/assets/130770806/c9c9238a-658d-4c90-a34f-85a2af8b269c">
 
 6. Enjoy your Spotify Web Player!
