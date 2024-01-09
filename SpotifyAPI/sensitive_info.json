@@ -1,6 +1,6 @@
 {
     "client":{
-        "client_id" : "45420b7bdbd044868beb5c5a9efa8519",
-        "client_secret" : "47528e9bfd3c4de1a440bc5ec4e75d61"
+        "client_id" : "CLIENT ID HERE",
+        "client_secret" : "CLIENT SECRET HERE"
     }
 }
