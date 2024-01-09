@@ -1,52 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" href="styles.css">
-    <script src="test1.js"></script>
-    <script src="devices.js"></script>
-    <script src="playback.js"></script>
+<head>
 
-    <body onload="onload_page(), setInterval('refresher()', 750)">
-        <!-- <body onload="get_token()"></body> -->
-    
+    <link rel="stylesheet" href="styles.css">
+    <script src="get_devices.js"></script>
+    <script src="initialization.js"></script>
+    <script src="playback.js"></script>
+</head>
+    <body onload="onload_page(), setInterval('refresher()', 750)">    
 
         <h1>
             Spotify API
         </h1>
-        <!-- <input id='client_id' class="search_bar">
-        <br>
-        <input id='client_secret' class="search_bar">
-        <br>
-        <button type="button" onclick="set_client_id_and_secret()">Submit</button>
-        <br> -->
 
         <button type="button" onclick="request_authorization()">Request Authorization</button>
-        <button type="button" onclick="refresh_access_token()">Refresh Authorization</button>
-        <br>
-        <br>
-        <button type="button" onclick="get_devices()">Get devices</button>
-        <br>
-        <p id='show_devices_HTML'>
-        </p>
 
-        <input id='device_choice' class="search_bar">
-        <button type="button" onclick="select_device()">Choose Device</button>
-        <p id="selected_device_HTML"></p>
+
+        <div class="drop_down">
+            <select id='device_choice' onfocus="update_device_dropdown(), select_device()">
+              <option value="" selected disabled>Select a Device</option>
+            </select>
+        </div>
+          <p id="selected_device_HTML">No Device Selected</p>
         
-        <br>
-        <input id='track_choice' class="search_bar">
+        <div class="playback-controls">
         <button type="button" onclick="play_new_song()">Play New Song</button>
-        <br>
+        <input id='track_choice' class="search_bar">
+        <input type="range" min="0" max="100" value="5" class="slider-container" id="volume_slider" oninput="on_input_volume()">
+        </div>
 
-        <input type="range" min="0" max="100" value="5" class="slider" id="volume_slider" oninput="on_input_volume()">
 
+        <div class="playback-controls">
         <button type="button" onclick="previous()">Previous Track</button>
         <button type="button" onclick="play()">Play Current Track</button>
         <button type="button" onclick="next()">Next Track</button>
-        <!-- <button type="button" onclick="set_volume()">Set volume</button> -->
-
-
-        <!-- <button type="button" onclick="set_volume()">Set Volume Button</button> -->
-        <!-- <button type="button" onclick="currently_playing()">See Currently Playing</button> -->
+        </div>
 
         <br>
         <p id="currently_playing_HTML"></p>

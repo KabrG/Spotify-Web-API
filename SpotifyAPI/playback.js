@@ -148,7 +148,6 @@ async function show_album_cover() {
     // console.log(image_url);
     let print_string = "<img src=" + image_url + ">";
     document.getElementById('album_cover').innerHTML = print_string;
-    
 }
 
 

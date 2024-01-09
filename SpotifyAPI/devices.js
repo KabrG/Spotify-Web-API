@@ -1,4 +1,4 @@
-const redirect_uri = 'http://127.0.0.1:5500/SpotifyAPI/HomePage.html';
+const redirect_uri = 'http://127.0.0.1:5500/HomePage.html';
 const AUTHORIZE = 'https://accounts.spotify.com/authorize';
 const state_value = '';
 var authorization_code = '';
@@ -10,6 +10,7 @@ var client_id = '';
 var client_secret = '';
 
 async function set_client_info() {
+   // Get user-related information from sensitive_info.js
   const response = await fetch("./sensitive_info.json");
   const json = await response.json();
 
@@ -17,7 +18,6 @@ async function set_client_info() {
   client_secret = json.client.client_secret;
   console.log(client_id);
   console.log(client_secret);
-
 }
 
 function request_authorization(){
@@ -45,7 +45,8 @@ async function onload_page(){
   }
 }
 
-async function redirect_post_authorization(){ // After it has been authorized, what occurs next
+// After it has been authorized, what occurs next
+async function redirect_post_authorization(){ 
   authorization_code = get_code();
   localStorage.setItem('authorization_code', authorization_code);
 
@@ -57,7 +58,8 @@ async function redirect_post_authorization(){ // After it has been authorized, w
 
 function get_code(){
   let code = null;
-  if (window.location.search.length > 0){ // window.location. search is the Query (characters at the end of URL)
+  // window.location. search is the Query (characters at the end of URL)
+  if (window.location.search.length > 0){ 
     let query = window.location.search;
     let params = new URLSearchParams(query)
     code = params.get('code');
